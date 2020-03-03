@@ -1,0 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp14
+{
+    interface ISpat
+    {
+        void Spi();
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Klient pepa = new Klient();
+            Hasici nejakyHasicy = new Hasici();
+            Policie nejakaPolicie = new Policie();
+            Policie nejakaPolicie2 = new Policie();
+            Zachranka jednaZachranka = new Zachranka();
+            List<ZachranaSluzba> list = new List<ZachranaSluzba> { nejakyHasicy, nejakaPolicie, nejakaPolicie2, jednaZachranka };
+            Centrala centrala = new Centrala(list);
+            centrala.PrijmiHovor("Gun");
+            nejakaPolicie.Zamestnanci();
+
+
+            
+        }
+    }
+    class Klient : ISpat
+    {
+        public Klient() {
+
+        }
+
+    }
+
+    class Centrala
+    {
+        List<ZachranaSluzba> seznamZS;
+        public Centrala(List<ZachranaSluzba> seznam)
+        {
+            this.seznamZS = seznam;
+        }
+
+        public void PrijmiHovor(string hovor)
+        {
+            if (hovor.Contains("Fire"))
+            {
+                Console.WriteLine("asd");
+            }
+            else if (hovor.Contains("Gun"))
+            {
+                Console.WriteLine("dsa");
+            }
+            else if (hovor.Contains("Ragdoll"))
+            {
+
+            }
+        }
+    }
+    abstract class ZachranaSluzba
+    {
+
+        List<string> zamestanci;
+
+        public ZachranaSluzba()
+        {
+            zamestanci = new List<string> { "Honza", "kuba" };
+        }
+        public void VysliZamestnance()
+        {
+            //nahodne vybrat zamestancance
+
+            Console.WriteLine("vysilam ", zamestanci[0]);
+        }
+        public string Zamestnanci
+        {
+            //vratit vsechny zamestance
+            get { return zamestanci[0]; }
+        }
+    }
+
+    class Hasici : ZachranaSluzba
+    {
+
+    }
+    class Policie : ZachranaSluzba
+    {
+
+    }
+    class Zachranka : ZachranaSluzba
+    {
+
+    }
+}
