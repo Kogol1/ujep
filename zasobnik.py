@@ -11,6 +11,8 @@ def mujinput1(func):
         push()
     if(func == "pop"):
         pop()
+    if(func == "end"):
+        end()
     else:
         print("špatné zadání")
         aCoTed()
