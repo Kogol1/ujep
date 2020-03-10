@@ -1,0 +1,20 @@
+from random import randint
+from random import seed
+from random import random
+
+
+print("Zadejte název souboru")
+filename = input()
+file = open(filename + '.txt',"w")
+
+print("Zadejte počet řádků")
+count = int(input())
+print("Zadejte min")
+min = int(input())
+print("Zadejte max")
+max = int(input())
+
+seed(random())
+for _ in range(count):
+	value = randint(min, max)
+	file.write(str(value) + "\n")
